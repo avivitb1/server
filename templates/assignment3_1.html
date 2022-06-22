@@ -1,10 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html' %}
+{% include 'header.html' %}
 
-</body>
-</html>
+{% block header %} {% endblock %}
+{% block content %}
+
+<h1>Our dogs types</h1>
+    <br>
+    <ul>
+    <li >{{ 'asian' | capitalize() }}</li>
+    <li >{{ 'israeli' | capitalize() }}</li>
+    <li >{{ 'italian' | title() }}</li>
+    <li >{{ 'poland' | title() }}</li>
+    <li >{{ 'arabic' | capitalize() }}</li>
+    <li >{{ 'american' | capitalize() }}</li>
+    <li >{{ 'modern' | capitalize() }}</li>
+    </ul>
+
+     <h1>do you want a recipe?</h1>
+     {% if want_a_recipe %}
+        <h1> Welcome, {{ user_name | default('guest', true) | upper() }}!</h1>
+    {% else %}
+        <h1> Are you sure?  </h1>
+    {% endif %}
+
+
+   <h1>recipe details :</h1>
+     {% for title, value in food_names.items() %}
+                <h3>{{ title }}: {{ value }}</h3>
+            {% endfor %}
+
+   <h1> for of food_types:</h1>
+    {% for food_type in food_types %}
+                {% if food_type == 'Asian' %}
+                    <h4>{{ food_type | upper() }} </h4>
+                {% endif %}
+    {% endfor %}
+
+{% endblock %}
+{{ super() }}

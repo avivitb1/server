@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
+{% block header %}
+ {% include 'header.html' %}
+{% endblock %}
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" href="../static/CSShomepage.css">
+    <script src="../static/JShomepage.js"></script>
 </head>
 <body>
+<div class="nav">
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ url_for('HomePage_func') }}">Home</a>
+                </li>
+                <li>
+                    <a href="{{ url_for('Contact_func') }}">Contact</a>
+                </li>
+                 <li>
+                    <a href="{{ url_for('assignment3_1_func') }}">Food Types</a>
+                </li>
+               <li>
+                   {% if session['logedin'] %}
+                        <a href="/log_out">Log Out</a>
+                   {% else %}
+                        <a href="{{ url_for('assignment3_2_func') }}">Log-In</a>
+                   {% endif %}
+               </li>
 
+            </ul>
+        </nav>
+    </div>
+ {% block content %}
+
+ {% endblock %}
+
+{% block footer %}
+     <footer>
+        <a href="{{ url_for('HomePage_func') }}">Home</a>
+        <a href="{{ url_for('Contact_func') }}">Contact</a>
+
+      </footer>
+{% endblock %}
 </body>
 </html>
