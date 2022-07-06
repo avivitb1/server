@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template
 
-assignment_4 = Blueprint('assignment_4', _name_,
+assignment_4 = Blueprint('assignment_4', __name__,
                          static_folder='static',
                          template_folder='templates')
 
