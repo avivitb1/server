@@ -4,6 +4,8 @@ from flask import render_template
 from flask import request
 from flask import session, jsonify
 from datetime import timedelta
+
+
 app = Flask(__name__)
 
 app.secret_key = '123'
@@ -26,6 +28,9 @@ def assignment3_1_func():  # put application's code here
     food_names = {'name': 'sushi',  'country': 'china', 'time': '2 h '}
     food_types = ['Asian', 'Israeli', 'Italian', 'Poland', 'Arabic', 'American', 'Modern']
     return render_template('assignment3_1.html', want_a_recipe=want_a_recipe , user_name= user_name , food_names=food_names, food_types =food_types )
+
+
+
 
 @app.route('/')
 def default():
@@ -87,3 +92,7 @@ def logout_func():
 
 if __name__ == '_main_':
     app.run(debug=True)
+
+from assignment_4.assignment_4 import assignment_4
+app.register_blueprint(assignment_4)
+

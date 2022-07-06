@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <form action="/assignment_4">
+        <br>
+        <input type="text" name="user_name" placeholder="Insert Name">
+        <input type="text" name="last_name" placeholder="Insert Last Name">
+        <input type="email" name="email" placeholder="Insert your email">
+        <input type="password" name="password" placeholder="Insert password">
+        <input type="submit" value="Creat">
+    </form>
+    
+{% endblock %}
+
+{{ super() }}
