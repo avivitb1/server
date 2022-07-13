@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h3>User List: <button onclick="myFunction()">Click Me</button></h3>
+
+    <h1>Insertion form: creat a new user</h1>
+    <div class="container">
+    <form action="/insert_user" , method="post" >
+    <br>
+        <input type="text" name="user_name" placeholder="Insert Name">
+        <input type="text" name="last_name" placeholder="Insert Last name">
+        <input type="email" name="email" placeholder="Insert your email">
+        <input type="password" name="password" placeholder="Insert password">
+        <input type="submit" value = "Creat">
+    </form>
+    </div>
+    <br>
+     <h1>Update form: update your email or password</h1>
+     <form action="/update_user" method="post">
+                <br>
+            <input type="text" name="user_name" placeholder="Insert Name">
+            <input type="email" name="email" placeholder="Insert your email">
+            <input type="password" name="password" placeholder="Insert password">
+            <input type="submit" value="Update">
+     </form>
+
+    <h1>Deletion form: choose a  user name</h1>
+    <br>
+    <form action="/delete_user" method="post">
+                <input type="text" name="user_name" >
+                <input type="submit" value="Delete">
+    </form>
+    <h1>List of all the users form: </h1>
+    <form action="/users"  >
+    <br>
+        {% for user in users %}
+            <div id = NUM1>
+                <h3>Name :{{ user.name }}  </h3>
+                <h3>Last Name: {{ user.last_name }}</h3>
+                <h4>Email: {{ user.email }}</h4>
+            </div>
+
+        {% endfor %}
+    <input type="submit" value = "Select">
+    </form>
+    <main>
+
+    </main>
+{% endblock %}
+
+{{ super() }}
