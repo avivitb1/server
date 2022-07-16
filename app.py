@@ -123,7 +123,6 @@ def users_func():
 
 @app.route('/insert_user', methods=['POST'])
 def insert_user():
-    #id_name = request.form['id']
     name = request.form['name']
     last_name = request.form['last_name']
     email = request.form['email']
@@ -131,11 +130,11 @@ def insert_user():
     print(f'{name} {last_name} {email} {password}')
     query = "INSERT INTO users(name, last_name, email, password) VALUES ('%s','%s', '%s', '%s')" % (name, last_name, email, password)
     interact_db(query=query, query_type='commit')
+    #session['message'] = 'the inset of User: ' + name + 'succeeded'
     return redirect('/users')
 
 @app.route('/update_user', methods=['POST'])
 def update_user_func():
-    # id = request.form['id']
     name = request.form['name']
     email = request.form['email']
     password = request.form['password']
@@ -145,6 +144,7 @@ def update_user_func():
     interact_db(query, query_type='commit')
     query = "UPDATE users SET password ='%s' WHERE name='%s';" % (password, name)
     interact_db(query, query_type='commit')
+    #session['message'] = 'the update of User: ' + name + 'succeeded'
     return redirect('/users')
 
 @app.route('/delete_user', methods=['POST'])
@@ -153,26 +153,34 @@ def delete_user_func():
     query = "DELETE FROM users WHERE name='%s';" % name
     # print(query)
     interact_db(query, query_type='commit')
+    #session['message'] = 'the delete of User: ' + name + 'succeeded'
     return redirect('/users')
 
 #---------------------------------------#
 #---------part b------------------------#
 #---------------------------------------#
 
-@app.route('/fetch_fe')
+@app.route('/assignment4/users')
+def get_users_db():
+    query = 'select * from users'
+    users_list = interact_db(query, query_type='fetch')
+    response = jsonify(users_list)
+    return response
+
+@app.route('/assignment4/outer_source')
 def fetch_func():
     return render_template('fetch_frontend.html')
 
 def get_users_sync(from_val):
-    pockemons = []
+    users = []
     res = requests.get(f'https://reqres.in/api/users/{from_val}')
-    pockemons.append(res.json())
-    print(pockemons)
-    return pockemons
+    users.append(res.json())
+    print(users)
+    return users
 
-def save_users_to_session(pockemons):
+def save_users_to_session(users):
     users_list_to_save = []
-    for user in pockemons:
+    for user in users:
         user_dict = {}
         # user_dict['sprites'] = {}
         user_dict['sprites'] = user['data']['avatar']
@@ -181,7 +189,7 @@ def save_users_to_session(pockemons):
         user_dict['email'] = user['data']['email']
         # print(user['data']['first_name'])
         users_list_to_save.append(user_dict)
-    session['pockemons'] = users_list_to_save
+    session['users'] = users_list_to_save
 
 @app.route('/assignment4/backend')
 def fetch_be_func():
@@ -189,11 +197,11 @@ def fetch_be_func():
         print('type')
         num = int(request.args['num'])
         session['num'] = num
-        pockemons = []
+        user = []
 
         if request.args['type'] == 'sync':
-            pockemons = get_users_sync(num)
-        save_users_to_session(pockemons)
+            user = get_users_sync(num)
+        save_users_to_session(user)
         return render_template('fetch.html')
 
     else:
@@ -227,57 +235,58 @@ def get_user_by_ID(USER_ID):
             'last_name': user_list.last_name,
             'email': user_list.email
         }
-#
-# @app.route('/profile', defaults={'user_id': -1})
-# @app.route('/profile/<int:user_id>')
-# def profile_func(user_id):
-#     # DB
-#     response = {}
-#
-#     if user_id == -1:
-#         response['message'] = 'No user inserted'
-#
-#     else:
-#
-#         query = "SELECT * FROM users WHERE id='%s';" % user_id
-#         query_result = interact_db(query=query, query_type='fetch')
-#         if len(query_result) != 0:
-#             response = query_result[0]
-#
-#     response = jsonify(response)
-#     return response
 
+@app.route('/profile', defaults={'user_id': -1})
+@app.route('/profile/<int:user_id>')
+def profile_func(user_id):
+
+    response = {}
+
+    if user_id == -1:
+        response['message'] = 'No user inserted'
+
+    else:
+
+        query = "SELECT * FROM users WHERE id='%s';" % user_id
+        query_result = interact_db(query=query, query_type='fetch')
+        if len(query_result) != 0:
+            response = query_result[0]
+
+    response = jsonify(response)
+    return response
+
+@app.route('/get_users', defaults={'user_id': -1})
+@app.route('/get_users/<user_id>')
+def get_user(user_id):
+    if user_id == -1:
+        query = f'select * from users'
+        users_list = interact_db(query, query_type='fetch')
+        return_list = []
+        for user in users_list:
+            user_dict = {
+                'name': user.name,
+                'last_name': user.last_name,
+                'email': user.email
+
+            }
+            return_list.append(user_dict)
+        return jsonify(return_list)
+
+    query = f'select * from users where id={user_id}'
+    users_list = interact_db(query, query_type='fetch')
 #
-# @app.route('/get_users', defaults={'user_id': -1})
-# @app.route('/get_users/<user_id>')
-# def get_user(user_id):
-#     if user_id == -1:
-#         query = f'select * from users'
-#         users_list = interact_db(query, query_type='fetch')
-#         return_list = []
-#         for user in users_list:
-#             user_dict = {
-#                 'name': user.name,
-#                 'email': user.email,
-#                 'create_date': user.create_date
-#             }
-#             return_list.append(user_dict)
-#         return jsonify(return_list)
-#
-#     query = f'select * from users where id={user_id}'
-#     users_list = interact_db(query, query_type='fetch')
-#
-#     if len(users_list) == 0:
-#         return_dict = {
-#             'message': 'user not found'
-#         }
-#     else:
-#         user_list = users_list[0]
-#         return_dict = {
-#             'name': user_list.name,
-#             'email': user_list.email,
-#             'create_date': user_list.create_date
-#         }
-#     return jsonify(return_dict)
+    if len(users_list) == 0:
+        return_dict = {
+            'message': 'user not found'
+        }
+    else:
+        user_list = users_list[0]
+        return_dict = {
+            'name': user_list.name,
+            'last_name': user_list.last_name,
+            'email': user_list.email
+
+        }
+    return jsonify(return_dict)
 if __name__ == '__main__':
     app.run(debug=True)
