@@ -9,7 +9,7 @@
     <form action="/assignment4/backend" method="get">
         Num: <input type="text" name="num" value={{ session.num | default(3, true) }}>
         <input type="hidden" name="type" value="sync">
-        <input type="submit" value="Get Random users">
+        <input type="submit" value="Get users">
     </form>
 
     {% if session.users %}
@@ -19,6 +19,7 @@
             <h4>Name: {{ user.last_name }}</h4>
             <h4>Name: {{ user.email }}</h4>
             <hr>
+            <br>
         {% endfor %}
     {% endif %}
 {% endblock %}

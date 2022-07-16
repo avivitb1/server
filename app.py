@@ -89,6 +89,10 @@ def logout_func():
     session.clear()
     return redirect(url_for('assignment3_2_func'))
 
+#-------------------------------------------#
+#-------------part a------------------------#
+#-------------------------------------------#
+
 @app.route('/session')
 def session_func():
     # print(session['CHECK'])
@@ -156,9 +160,9 @@ def delete_user_func():
     #session['message'] = 'the delete of User: ' + name + 'succeeded'
     return redirect('/users')
 
-#---------------------------------------#
-#---------part b------------------------#
-#---------------------------------------#
+#-------------------------------------------#
+#-------------part b------------------------#
+#-------------------------------------------#
 
 @app.route('/assignment4/users')
 def get_users_db():
@@ -217,6 +221,9 @@ def json_func():
     }
     return jsonify(sample_dic)
 
+#-------------------------------------------#
+#-------------part c------------------------#
+#-------------------------------------------#
 
 @app.route('/assignment4/restapi_users', defaults={'USER_ID': 1})
 @app.route('/assignment4/restapi_users/<int:USER_ID>')
