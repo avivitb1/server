@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="59cdc7f1-0233-42f7-810b-16539d136d8f" name="Changes" comment="1">
-      <change afterPath="$PROJECT_DIR$/static/assignment_4.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/assignment_4.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/templates/fetch.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/templates/fetch_frontend.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources/8bc487df-a3d7-4317-870a-9776c68d02ab.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/8bc487df-a3d7-4317-870a-9776c68d02ab.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.py" beforeDir="false" afterPath="$PROJECT_DIR$/app.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment_4/assignment_4.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/assignment_4/templates/assignment_4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/assignment3_1.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/assignment3_1.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/assignment_4.js" beforeDir="false" afterPath="$PROJECT_DIR$/static/fetch.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/assignment3_2.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/assignment3_2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/assignment_4.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/users.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/templates/base.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/base.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/templates/contact.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/contact.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/fetch.html" beforeDir="false" afterPath="$PROJECT_DIR$/templates/fetch.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +25,9 @@
       <list>
         <option value="Flask Main" />
         <option value="CSS File" />
-        <option value="Python Script" />
         <option value="JavaScript File" />
         <option value="HTML File" />
+        <option value="Python Script" />
       </list>
     </option>
   </component>
@@ -53,6 +50,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "database.data.extractors.current.export.id": "Comma-separated (CSV)_id",
     "last_opened_file_path": "/Users/avivitbenhayun/Desktop/server/templates",
     "list.type.of.created.stylesheet": "CSS",
     "node.js.detected.package.eslint": "true",
@@ -67,8 +65,15 @@
   }
 }]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/static" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/templates" />
+      <recent name="$PROJECT_DIR$/static" />
+      <recent name="$PROJECT_DIR$/assignment_4/templates" />
+      <recent name="$PROJECT_DIR$/assignment_4/static" />
     </key>
   </component>
   <component name="RunManager">
@@ -107,7 +112,7 @@
       <workItem from="1657113654579" duration="4151000" />
       <workItem from="1657121585874" duration="4624000" />
       <workItem from="1657127091385" duration="6714000" />
-      <workItem from="1657215482088" duration="17382000" />
+      <workItem from="1657215482088" duration="49681000" />
     </task>
     <task id="LOCAL‎00001" summary="1">
       <created>1657126563268</created>
@@ -137,6 +142,6 @@
     <option name="LAST_COMMIT_MESSAGE" value="1" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/app_py$server.coverage" NAME="server Coverage Results" MODIFIED="1657737341358" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/app_py$server.coverage" NAME="server Coverage Results" MODIFIED="1657977407767" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>

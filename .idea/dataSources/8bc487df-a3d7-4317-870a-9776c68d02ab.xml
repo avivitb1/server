@@ -4878,21 +4878,32 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <DataType>varchar(64)|0s</DataType>
       <Position>6</Position>
     </column>
-    <column id="1097" parent="363" name="name">
-      <DataType>varchar(255)|0s</DataType>
+    <column id="1097" parent="363" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
       <Position>1</Position>
     </column>
-    <column id="1098" parent="363" name="last_name">
+    <column id="1098" parent="363" name="name">
       <DataType>varchar(255)|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="1099" parent="363" name="email">
-      <DataType>text|0s</DataType>
+    <column id="1099" parent="363" name="last_name">
+      <DataType>varchar(255)|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="1100" parent="363" name="password">
-      <DataType>varchar(120)|0s</DataType>
+    <column id="1100" parent="363" name="email">
+      <DataType>text|0s</DataType>
       <Position>4</Position>
     </column>
+    <column id="1101" parent="363" name="password">
+      <DataType>varchar(120)|0s</DataType>
+      <Position>5</Position>
+    </column>
+    <key id="1102" parent="363" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+    </key>
   </database-model>
 </dataSource>

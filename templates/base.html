@@ -14,26 +14,29 @@
         <nav>
             <ul>
                 <li>
-                    <a href="{{ url_for('HomePage_func') }}">Home</a>
+                    <a href="/homepage">Home</a>
                 </li>
                 <li>
-                    <a href="{{ url_for('Contact_func') }}">Contact</a>
+                    <a href="/contact">Contact</a>
                 </li>
                  <li>
-                    <a href="{{ url_for('assignment3_1_func') }}">Food Types</a>
+                    <a href="/assignment3_1">Food Types</a>
                 </li>
                <li>
                    {% if session['logedin'] %}
                         <a href="/log_out">Log Out</a>
                    {% else %}
-                        <a href="{{ url_for('assignment3_2_func') }}">Log-In</a>
+                        <a href="'/assignment3_2'">Log-In</a>
                    {% endif %}
                </li>
                 <li>
-                    <a href="/assignment_4">Users</a>
+                    <a href="/users">Users</a>
                 </li>
                 <li>
-                    <a href="/fetch">Part4</a>
+                    <a href="/fetch_fe">fetch-front</a>
+                </li>
+            <li>
+                    <a href="/assignment4/backend">fetch-back</a>
                 </li>
 
             </ul>
